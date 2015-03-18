@@ -33,5 +33,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+        
+        // THIS IS A USELESS COMMENT
     }
 }
