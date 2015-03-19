@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">Nurse Project</string>
+    <string name="app_name">ANDROID Projet 3-Delaporte</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="menu_list">Liste des patients</string>
+    <string name="menu_import">Importer les patients</string>
+    <string name="menu_export">Exporter les patients</string>
+    <string name="title_activity_vuepatient">vuepatient</string>
+    <string name="title_activity_affiche_liste_patient">AfficheListePatient</string>
+    <string name="title_activity_modification_patient">ModificationPatient</string>
+    <string name="title_activity_act_import">ActImport</string>
 </resources>
