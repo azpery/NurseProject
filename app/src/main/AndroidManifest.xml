@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="darkvador.nurseproject" >
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -34,5 +36,10 @@
             android:name=".ActImport"
             android:label="@string/title_activity_act_import" >
         </activity>
+        <activity
+            android:name=".ActExport"
+            android:label="@string/title_activity_act_export" >
+        </activity>
     </application>
+
 </manifest>

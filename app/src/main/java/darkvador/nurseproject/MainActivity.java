@@ -38,8 +38,8 @@ public class MainActivity extends ActionBarActivity {
 
                 return true;
             case R.id.menu_export:
-
-                Toast.makeText(getApplicationContext(), "clic sur export", Toast.LENGTH_LONG).show();
+                Intent IntentExport = new Intent(getApplicationContext(), ActExport.class);
+                startActivity(IntentExport);
                 return true;
 
             default:

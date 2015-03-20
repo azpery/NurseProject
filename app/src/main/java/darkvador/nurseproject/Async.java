@@ -69,6 +69,11 @@ public class Async extends AsyncTask<String, String, Boolean> {
             vUrl = params[0];
 
         }
+        String vlistpatient="";
+        if (classActivityAppelante.contains("ActExport")) {
+            vUrl = params[0];
+            vlistpatient = params[1];
+        }
         HttpURLConnection urlConnection = null;
         try {
             URL url = new URL(vUrl);
@@ -82,12 +87,11 @@ public class Async extends AsyncTask<String, String, Boolean> {
             OutputStreamWriter out = new OutputStreamWriter(
                     urlConnection.getOutputStream());
             // selon l'activity appelante on peut passer des paramètres en JSON exemple util pour export
-            if (classActivityAppelante.contains("xxxxxxxxxxx"))
+            if (classActivityAppelante.contains("ActExport"))
             {
                 // Création objet jsonn clé valeur
                 JSONObject jsonParam = new JSONObject();
-                jsonParam.put("xxxx", "jug");
-                jsonParam.put("xxxx", "jug");
+                jsonParam.put("listpatient", vlistpatient);
                 out.write(jsonParam.toString());
                 out.flush();
             }
@@ -143,6 +147,8 @@ public class Async extends AsyncTask<String, String, Boolean> {
                     param[0].toString(), param[1].toString());
         }
         ((ProgressBar) mContext.findViewById(R.id.progressBar)).setProgress(50);
+        Toast.makeText(activityAppelante.get(), param[0].toString(),
+                Toast.LENGTH_SHORT).show();
 
     }
 
