@@ -19,6 +19,7 @@ public class ActExport extends ActionBarActivity {
     private Button mBouton = null;
     private AsyncTask<String, String, Boolean> mThreadCon = null;
     String sPatient="";
+    Model model= new Model();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +41,11 @@ public class ActExport extends ActionBarActivity {
 
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String[] mesparams = { "http://10.0.3.2/patient/export.php",sPatient};
+                String[] mesparams = { "http://rdelaporte.alwaysdata.net/export.php",sPatient};
                 mThreadCon = new Async (ActExport.this).execute(mesparams);
             }
         });
+        model.deletePatient();
     }
 
 

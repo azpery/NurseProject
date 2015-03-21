@@ -22,7 +22,7 @@ public class Model {
         createDirectory();
         open();
         // si partie import non développée
-        chargeDataBase();
+        //chargeDataBase();
         dataBase.close();
     }
     public void deletePatient() {
@@ -88,7 +88,7 @@ public class Model {
         }
         dataBase.close();
     }
-    public void chargeDataBase() {
+    /*public void chargeDataBase() {
         try {
             ObjectSet<Patient> result = dataBase.queryByExample(Patient.class);
             if (result.size() == 0) {
@@ -150,5 +150,5 @@ public class Model {
         } finally {
             dataBase.close();
         }
-    }
+    }*/
 }

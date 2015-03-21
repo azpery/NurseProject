@@ -32,7 +32,7 @@ public class ActImport extends ActionBarActivity {
 
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String[] mesparams = { "http://10.0.3.2/patient/import.php" };
+                String[] mesparams = { "http://rdelaporte.alwaysdata.net/import.php" };
                 mThreadCon = new Async (ActImport.this).execute(mesparams);
             }
         });
@@ -46,7 +46,7 @@ public class ActImport extends ActionBarActivity {
         ArrayList<Patient> listePatient = new ArrayList<Patient>();
         for (JsonElement obj : varray) {
             Patient patient = gson.fromJson(obj.getAsJsonObject(), Patient.class);
-            patient.setCommentaireVisite("");
+            //patient.setCommentaireVisite("");
             listePatient.add(patient);
         }
         model.deletePatient();

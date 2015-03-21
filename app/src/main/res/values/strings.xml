@@ -3,6 +3,11 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string-array name="menu">
+        <item>Liste des patients</item>
+        <item >Importer les patients</item>
+        <item >Exporter les patients</item>
+    </string-array>
     <string name="menu_list">Liste des patients</string>
     <string name="menu_import">Importer les patients</string>
     <string name="menu_export">Exporter les patients</string>

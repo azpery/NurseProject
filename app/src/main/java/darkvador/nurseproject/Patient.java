@@ -16,7 +16,7 @@ public class Patient {
     private Date dateNaiss;
     private String commentaireVisite;
     public Patient(){}
-    public Patient(String videntifiant, String vnom, String vprenom,String vadresse, String vcp, String vville, String vtl,Date vdateNaiss) {
+    public Patient(String videntifiant, String vnom, String vprenom,String vadresse, String vcp, String vville, String vtl,Date vdateNaiss, String vcommentaireVisite) {
         setIdentifiant(videntifiant);
         setNom(vnom);
         setPrenom(vprenom);
@@ -25,7 +25,7 @@ public class Patient {
         setVille(vville);
         setTelephone(vtl);
         setDateNaiss(vdateNaiss);
-        setCommentaireVisite("");
+        setCommentaireVisite(vcommentaireVisite);
     }
     public void recopiePatient(Patient patient)
     {
