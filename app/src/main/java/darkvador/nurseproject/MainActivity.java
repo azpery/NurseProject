@@ -108,10 +108,16 @@ public class MainActivity extends ActionBarActivity {
         if(position==0){
             fragment = new AfficheListePatient();
         }else if(position==1){
-           fragment = new ActExport();
+           fragment = new ActImport();
         }else if(position==2){
-            fragment = new ActImport();
+            fragment = new ActExport();
+        }else if(position==3){
+            fragment = new ActImportActe();
+        }else if(position == 4){
+            fragment = new AfficheListeActes();
         }
+
+
 
         Bundle args = new Bundle();
         args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);

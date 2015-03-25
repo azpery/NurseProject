@@ -40,6 +40,10 @@
             android:name=".ActExport"
             android:label="@string/title_activity_act_export" >
         </activity>
+        <activity
+            android:name=".vueacte"
+            android:label="@string/title_activity_vueacte" >
+        </activity>
     </application>
 
 </manifest>

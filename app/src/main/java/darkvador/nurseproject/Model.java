@@ -7,6 +7,7 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,12 +34,27 @@ public class Model {
         }
         dataBase.close();
     }
+
     public void addPatient(ArrayList<Patient> vPatient) {
         open();
         for (Patient v : vPatient) {
             dataBase.store(v);
         }
         dataBase.close();
+    }
+    public void deleteActe(){
+        open();
+        ObjectSet<Acte> result = dataBase.queryByExample(Acte.class);
+        while (result.hasNext()){
+            dataBase.delete(result.next());
+        }
+    }
+    public void addActe(ArrayList<Acte> aActe)
+    {
+        open();
+        for (Acte a : aActe){
+            dataBase.store(a);
+        }
     }
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o"+ "/BasePatient.db4o";
@@ -57,13 +73,23 @@ public class Model {
     }
     public ArrayList<Patient> listePatient() {
         open();
-        ArrayList<Patient> listePatient = new ArrayList<Patient>();
+        ArrayList<Patient> listePatient = new ArrayList<>();
         ObjectSet<Patient> result = dataBase.queryByExample(Patient.class);
         while (result.hasNext()) {
             listePatient.add(result.next());
         }
         dataBase.close();
         return listePatient;
+    }
+    public ArrayList<Acte> listeActes() {
+        open();
+        ArrayList<Acte> listeActe = new ArrayList<>();
+        ObjectSet<Acte> result = dataBase.queryByExample(Acte.class);
+        while (result.hasNext()){
+            listeActe.add(result.next());
+        }
+        dataBase.close();
+        return listeActe;
     }
     public Patient trouvePatient (String id) {
         open();

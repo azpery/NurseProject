@@ -52,13 +52,16 @@ public class Async extends AsyncTask<String, String, Boolean> {
 
                 tv.setVisibility(View.VISIBLE);
                 //pour exemple on appelle une méthode de l'appelant qui va gérer la fin ok du thread
-                if (classActivityAppelante.contains("ActImport"))
-                {
-                    tv.setText("Import terminé avec succès");
-                    ((ActImport) activityAppelante.get()).retourImport (stringBuilder);
+                if (classActivityAppelante.contains("ActImportAct")) {
+                    tv.setText("Import Actes terminé avec succès");
+                    ((ActImportActe) activityAppelante.get()).retourImport(stringBuilder);
                 }
                 else if (classActivityAppelante.contains("ActExport")){
                     tv.setText("Export des données terminé avec succès");
+                }else if (classActivityAppelante.contains("ActImport"))
+                {
+                    tv.setText("Import terminé avec succès");
+                    ((ActImport) activityAppelante.get()).retourImport (stringBuilder);
                 }
             }
             else{}
@@ -69,6 +72,10 @@ public class Async extends AsyncTask<String, String, Boolean> {
     @Override
     protected Boolean doInBackground (String... params) {// Exécution en arrière plan
         String vUrl = "";
+        if (classActivityAppelante.contains("ActImportActe")) {
+            vUrl = params[0];
+
+        }
         if (classActivityAppelante.contains("ActImport")) {
             vUrl = params[0];
 
