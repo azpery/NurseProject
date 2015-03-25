@@ -1,11 +1,14 @@
 package darkvador.nurseproject;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -14,36 +17,33 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class AfficheListePatient extends ActionBarActivity {
+public class AfficheListePatient extends Fragment {
     private ListView listView;
     private Model myModel=new Model();
     private ArrayList<Patient> listePatient;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_affiche_liste_patient, container, false);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
         listePatient=myModel.listePatient();
-        setContentView(R.layout.activity_affiche_liste_patient);
-        listView = (ListView)findViewById(R.id.lvListe);
-        PatientAdapter patientAdapter = new PatientAdapter(this, listePatient);
+        //setContentView(R.layout.activity_affiche_liste_patient);
+        listView = (ListView)getView().findViewById(R.id.lvListe);
+        PatientAdapter patientAdapter = new PatientAdapter(getView().getContext(), listePatient);
         listView.setAdapter(patientAdapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Intent myIntent = new Intent(getApplicationContext(), ModificationPatient.class);
+                Intent myIntent = new Intent(getView().getContext(), ModificationPatient.class);
                 myIntent.putExtra("idPatient", listePatient.get(position).getIdentifiant());
                 startActivity(myIntent);
-                Toast.makeText(getApplicationContext(), "Choix : " + listePatient.get(position).getIdentifiant(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getView().getContext(), "Choix : " + listePatient.get(position).getIdentifiant(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_affiche_liste_patient, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,4 +59,6 @@ public class AfficheListePatient extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

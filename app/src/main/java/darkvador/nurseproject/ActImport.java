@@ -1,13 +1,16 @@
 package darkvador.nurseproject;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 
@@ -20,15 +23,19 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 
 
-public class ActImport extends ActionBarActivity {
+public class ActImport extends Fragment {
     private Button mBouton = null;
     private AsyncTask<String, String, Boolean> mThreadCon = null;
     private Model model= new Model();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_import);
-        Button testcon= (Button) findViewById(R.id.testcon);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_act_import, container, false);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Button testcon= (Button) getView().findViewById(R.id.testcon);
 
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -54,12 +61,7 @@ public class ActImport extends ActionBarActivity {
         //alertmsg("Import terminé","Les "+listePatient.size()+" patients ont été ajouté à la base");
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_act_import, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -76,7 +78,7 @@ public class ActImport extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
     public void alertmsg(String title, String msg) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getView().getContext());
         builder.setMessage(msg)
                 .setTitle(title);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

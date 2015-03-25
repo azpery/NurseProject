@@ -1,29 +1,39 @@
 package darkvador.nurseproject;
 
+import android.app.Fragment;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 
-public class ActExport extends ActionBarActivity {
+public class ActExport extends Fragment {
     private Button mBouton = null;
     private AsyncTask<String, String, Boolean> mThreadCon = null;
     String sPatient="";
     Model model= new Model();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_export);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_act_export, container, false);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
         Model modele = new Model();
         ArrayList<Patient> listPatient = modele.listePatient();
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss.S")
@@ -37,7 +47,7 @@ public class ActExport extends ActionBarActivity {
                 sPatient = sPatient + "@@@";
             }
         }
-        Button testcon= (Button) findViewById(R.id.testcon);
+        Button testcon= (Button) getView().findViewById(R.id.testcon);
 
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
@@ -46,14 +56,6 @@ public class ActExport extends ActionBarActivity {
             }
         });
         model.deletePatient();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_act_export, menu);
-        return true;
     }
 
     @Override

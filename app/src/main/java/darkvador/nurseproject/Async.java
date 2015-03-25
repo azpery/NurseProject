@@ -1,6 +1,7 @@
 package darkvador.nurseproject;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -21,25 +22,24 @@ import java.net.URL;
 
 public class Async extends AsyncTask<String, String, Boolean> {
     // Référence à l'activité qui appelle
-    private WeakReference<Activity> activityAppelante = null;
+    private WeakReference<Fragment> activityAppelante = null;
     private String classActivityAppelante;
     private StringBuilder stringBuilder = new StringBuilder();
-    private Activity mContext;
+    private Fragment mContext;
 
-    public Async (Activity pActivity) {
-        activityAppelante = new WeakReference<Activity>(pActivity);
+    public Async (Fragment pActivity) {
+        activityAppelante = new WeakReference<Fragment>(pActivity);
         classActivityAppelante = pActivity.getClass().toString();
         this.mContext =pActivity;
     }
-
     @Override
     protected void onPreExecute () {// Au lancement, on envoie un message à l'appelant
         super.onPreExecute();
         if (activityAppelante.get() != null)
             //Toast.makeText(activityAppelante.get(), "Thread on démarre", Toast.LENGTH_SHORT).show();
-         ((ProgressBar) mContext.findViewById(R.id.progressBar)).setVisibility(View.VISIBLE);
+         ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setVisibility(View.VISIBLE);
 
-        ((ProgressBar) mContext.findViewById(R.id.progressBar)).setProgress(20);
+        ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(20);
 
     }
 
@@ -47,19 +47,23 @@ public class Async extends AsyncTask<String, String, Boolean> {
     protected void onPostExecute (Boolean result) {
         if (activityAppelante.get() != null) {
             if (result) {
-                ((ProgressBar) mContext.findViewById(R.id.progressBar)).setProgress(100);
-                TextView tv =(TextView) mContext.findViewById(R.id.tV);
-                tv.setText("Import terminé avec succès");
+                ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(100);
+                TextView tv =(TextView) mContext.getView().findViewById(R.id.tV);
+
                 tv.setVisibility(View.VISIBLE);
-//pour exemple on appelle une méthode de l'appelant qui va gérer la fin ok du thread
+                //pour exemple on appelle une méthode de l'appelant qui va gérer la fin ok du thread
                 if (classActivityAppelante.contains("ActImport"))
                 {
+                    tv.setText("Import terminé avec succès");
                     ((ActImport) activityAppelante.get()).retourImport (stringBuilder);
                 }
+                else if (classActivityAppelante.contains("ActExport")){
+                    tv.setText("Export des données terminé avec succès");
+                }
             }
-            else
-                Toast.makeText(activityAppelante.get(), "Fin ko",
-                        Toast.LENGTH_SHORT).show();		}
+            else{}
+               // Toast.makeText(activityAppelante.get(), "Fin ko", Toast.LENGTH_SHORT).show();
+               }
     }
 
     @Override
@@ -135,7 +139,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
             if (urlConnection != null)
                 urlConnection.disconnect();
         }
-        ((ProgressBar) mContext.findViewById(R.id.progressBar)).setProgress(50);
+        ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(50);
         return true;
     }
     @Override
@@ -143,19 +147,17 @@ public class Async extends AsyncTask<String, String, Boolean> {
         // utilisation de on progress pour afficher des message pendant le
         // doInBackground
         if (classActivityAppelante.contains("ActImport")) {
-            ((ActImport) activityAppelante.get()).alertmsg (
-                    param[0].toString(), param[1].toString());
+            //((ActImport) activityAppelante.get()).alertmsg (param[0].toString(), param[1].toString());
         }
-        ((ProgressBar) mContext.findViewById(R.id.progressBar)).setProgress(50);
-        Toast.makeText(activityAppelante.get(), param[0].toString(),
-                Toast.LENGTH_SHORT).show();
+        ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(50);
+        //Toast.makeText(activityAppelante.get(), param[0].toString(), Toast.LENGTH_SHORT).show();
 
     }
 
 
     @Override
     protected void onCancelled () {
-        if(activityAppelante.get() != null)
-            Toast.makeText(activityAppelante.get(), "Annulation", Toast.LENGTH_SHORT).show();
+        if(activityAppelante.get() != null);
+            //Toast.makeText(activityAppelante.get(), "Annulation", Toast.LENGTH_SHORT).show();
     }
 }

@@ -21,4 +21,8 @@
         android:title="@string/menu_export"/>
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_websearch"
+        android:icon="@mipmap/action_search"
+        android:title="@string/action_websearch"
+        android:showAsAction="ifRoom|withText" />
 </menu>
