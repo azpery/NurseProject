@@ -13,6 +13,8 @@ public class Acte {
 
     public void setEstFait(boolean estFait) {
         this.estFait = estFait;
+        if (!isEstFait())
+            this.estFait = false;
     }
 
     public String getLibelle() {
