@@ -61,11 +61,7 @@ public class PatientAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        if (position % 2 == 0) {
-            convertView.setBackgroundColor(Color.rgb(238, 233, 233));
-        } else {
-            convertView.setBackgroundColor(Color.rgb(255, 255, 255));
-        }
+
         holder.textViewIdentifiant.setText(listPatient.get(position)
                 .getIdentifiant());
         holder.textViewNom.setText(listPatient.get(position).getNom());

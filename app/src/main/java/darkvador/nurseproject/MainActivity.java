@@ -6,9 +6,10 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,15 +39,27 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         myModel= new Model();
         menu = getResources().getStringArray(R.array.menu);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
+        toolbar.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        // Handle the menu item
+                        return true;
+                    }
+                });
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, menu));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        //mTitle = mDrawerTitle = getTitle();
+        mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.mipmap.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
@@ -117,10 +130,7 @@ public class MainActivity extends ActionBarActivity {
             fragment = new AfficheListeActes();
         }
 
-
-
         Bundle args = new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
         fragment.setArguments(args);
 
         // Insert the fragment by replacing any existing fragment
@@ -145,43 +155,8 @@ public class MainActivity extends ActionBarActivity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        switch (item.getItemId()) {
-            case R.id.menu_list:
-                Intent IntentListePatient = new Intent(getApplicationContext(), AfficheListePatient.class);
-                startActivity(IntentListePatient);
-                return true;
-            case R.id.menu_import:
-                Intent IntentImport = new Intent(getApplicationContext(), ActImport.class);
-                startActivity(IntentImport);
 
-                return true;
-            case R.id.menu_export:
-                Intent IntentExport = new Intent(getApplicationContext(), ActExport.class);
-                startActivity(IntentExport);
-                return true;
-        }
         return super.onOptionsItemSelected(item);
 
     }
-public static class PlanetFragment extends Fragment {
-            public static final String ARG_PLANET_NUMBER = "planet_number";
-
-            public PlanetFragment() {
-                // Empty constructor required for fragment subclasses
-            }
-
-            @Override
-            public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                     Bundle savedInstanceState) {
-                View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
-                int i = getArguments().getInt(ARG_PLANET_NUMBER);
-                String planet = getResources().getStringArray(R.array.menu)[i];
-
-                int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
-                        "drawable", getActivity().getPackageName());
-                ((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
-                //getActivity().setTitle(planet);
-                return rootView;
-            }
-        }
     }

@@ -59,14 +59,14 @@ public class Model {
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o"+ "/BasePatient.db4o";
         // dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
-        //db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
+        db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
         dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
     }
     public void createDirectory() {
         appDir = new File(Environment.getExternalStorageDirectory()
                 + "/baseDB4o");
 
-        //appDir = new File("/data" + "/basedb4o");
+        appDir = new File("/data" + "/basedb4o");
         if (!appDir.exists() && !appDir.isDirectory()) {
             appDir.mkdirs();
         }
