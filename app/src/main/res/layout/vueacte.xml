@@ -11,28 +11,23 @@
         android:baselineAligned="false"
         android:layout_gravity="center_vertical">
         <TextView
-            android:id="@+id/vueId"
+            android:id="@+id/Soins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"/>
 
         <TextView
-            android:id="@+id/vueLibelle"
+            android:id="@+id/typeSoins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"/>
 
         <TextView
-            android:id="@+id/vueDuree"
+            android:id="@+id/EstFait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"/>
 
-        <TextView
-            android:id="@+id/vueDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
 
     </LinearLayout>
 
