@@ -24,22 +24,22 @@
             android:name=".vuepatient"
             android:label="@string/title_activity_vuepatient" >
         </activity>
-        <activity
+        <fragment
             android:name=".AfficheListePatient"
             android:label="@string/title_activity_affiche_liste_patient" >
-        </activity>
+        </fragment>
         <activity
             android:name=".ModificationPatient"
             android:label="@string/title_activity_modification_patient" >
         </activity>
-        <activity
+        <fragment
             android:name=".ActImport"
             android:label="@string/title_activity_act_import" >
-        </activity>
-        <activity
+        </fragment>
+        <fragment
             android:name=".ActExport"
             android:label="@string/title_activity_act_export" >
-        </activity>
+        </fragment>
         <activity
             android:name=".vueacte"
             android:label="@string/title_activity_vueacte" >
