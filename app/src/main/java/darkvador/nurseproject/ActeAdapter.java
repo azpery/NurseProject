@@ -43,14 +43,11 @@ public class ActeAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.vueacte, null);
-            holder.textViewIdentifiant = (TextView) convertView
-                    .findViewById(R.id.vueId);
-            holder.textViewLibelle = (TextView) convertView
-                    .findViewById(R.id.vueLibelle);
-            holder.textViewDuree = (TextView) convertView
-                    .findViewById(R.id.vueDuree);
-            holder.textViewDescription = (TextView) convertView
-                    .findViewById(R.id.vueDescription);
+
+            holder.textViewSoins = (TextView) convertView
+                    .findViewById(R.id.Soins);
+            holder.textViewTypeSoins = (TextView) convertView
+                    .findViewById(R.id.typeSoins);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -60,19 +57,15 @@ public class ActeAdapter extends BaseAdapter {
         } else {
             convertView.setBackgroundColor(Color.rgb(255, 255, 255));
         }
-        holder.textViewIdentifiant.setText(listActe.get(position)
-                .getId());
-        holder.textViewLibelle.setText(listActe.get(position).getLibelle());
-        holder.textViewDuree.setText(listActe.get(position).getDuree());
-        holder.textViewDescription.setText(listActe.get(position).getDescription());
+        holder.textViewSoins.setText(listActe.get(position)
+                .getLibelle());
+        holder.textViewTypeSoins.setText(listActe.get(position)
+                .getTypeSoin());
         return convertView;
     }
 
     private class ViewHolder {
-        TextView textViewIdentifiant;
-        TextView textViewDuree;
-        TextView textViewLibelle;
-        TextView textViewDescription;
-
+        TextView textViewSoins;
+        TextView textViewTypeSoins;
     }
 }

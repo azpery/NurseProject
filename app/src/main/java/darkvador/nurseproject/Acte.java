@@ -4,8 +4,8 @@ package darkvador.nurseproject;
  * Created by Mathieu on 25/03/2015.
  */
 public class Acte {
-    private int id;
-    private String libelle;
+
+
 
     public boolean isEstFait() {
         return estFait;
@@ -13,14 +13,6 @@ public class Acte {
 
     public void setEstFait(boolean estFait) {
         this.estFait = estFait;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getLibelle() {
@@ -39,10 +31,21 @@ public class Acte {
         this.typeSoin = typeSoin;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+    private String libelle;
     private String typeSoin;
     private boolean estFait;
+
     public Acte(int unId, String unLibelle, String unTypeSoin)
     {
-        id = unId; libelle = unLibelle; typeSoin = unTypeSoin; estFait = false;
+        id = unId ;libelle = unLibelle; typeSoin = unTypeSoin; estFait = false;
     }
 }
