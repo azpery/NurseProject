@@ -48,6 +48,7 @@ public class Model {
         while (result.hasNext()){
             dataBase.delete(result.next());
         }
+        dataBase.close();
     }
     public void addActe(ArrayList<Acte> aActe)
     {
@@ -55,6 +56,7 @@ public class Model {
         for (Acte a : aActe){
             dataBase.store(a);
         }
+        dataBase.close();
     }
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o"+ "/BasePatient.db4o";
