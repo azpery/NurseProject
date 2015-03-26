@@ -39,7 +39,7 @@ public class ActImportActe extends Fragment {
 
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String[] mesparams = { "http://192.168.0.17/patient/importActe.php" };
+                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importActes.php" };
                 mThreadCon = new Async (ActImportActe.this).execute(mesparams);
             }
         });
