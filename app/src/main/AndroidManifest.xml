@@ -24,14 +24,17 @@
             android:name=".vuepatient"
             android:label="@string/title_activity_vuepatient" >
         </activity>
+
         <fragment
             android:name=".AfficheListePatient"
             android:label="@string/title_activity_affiche_liste_patient" >
         </fragment>
+
         <activity
             android:name=".ModificationPatient"
             android:label="@string/title_activity_modification_patient" >
         </activity>
+
         <fragment
             android:name=".ActImport"
             android:label="@string/title_activity_act_import" >
@@ -40,9 +43,14 @@
             android:name=".ActExport"
             android:label="@string/title_activity_act_export" >
         </fragment>
+
         <activity
             android:name=".vueacte"
             android:label="@string/title_activity_vueacte" >
+        </activity>
+        <activity
+            android:name=".test"
+            android:label="@string/title_activity_test" >
         </activity>
     </application>
 

@@ -21,7 +21,7 @@ public class ModificationPatient extends ActionBarActivity {
         setContentView(R.layout.activity_modification_patient);
         Bundle b = getIntent().getExtras();
         String idPatient = b.getString("idPatient");
-        Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
         remplir_champ(idPatient);
     }
 

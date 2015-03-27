@@ -1,0 +1,7 @@
+<root>
+    <item name='android.view.View android.view.View findViewById(int)'>
+        <annotation name='org.jetbrains.annotations.Contract'>
+            <val val="&quot;false-&gt;fail&quot;" />
+        </annotation>
+    </item>
+</root>

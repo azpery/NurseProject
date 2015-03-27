@@ -9,6 +9,7 @@
         <item >Exporter les patients</item>
         <item >Importer les actes</item>
         <item >Afficher les actes</item>
+        <item>Calendrier</item>
     </string-array>
     <string name="menu_list">Liste des patients</string>
     <string name="menu_import">Importer les patients</string>
@@ -25,4 +26,9 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_vueacte">vueacte</string>
+    <string name="title_activity_test">test</string>
+    <string name="action_today">Go to today</string>
+    <string name="action_day_view">Day view</string>
+    <string name="action_three_day_view">3 day view</string>
+    <string name="action_week_view">Week view</string>
 </resources>
