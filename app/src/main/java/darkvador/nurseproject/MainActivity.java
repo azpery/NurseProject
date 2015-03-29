@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -37,12 +38,34 @@ public class MainActivity extends ActionBarActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setIcon(R.drawable.rsz_2logo);
+            getSupportActionBar().setHomeButtonEnabled(true);
+
         }
         toolbar.setOnMenuItemClickListener(
                 new Toolbar.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        // Handle the menu item
+                        int id = item.getItemId();
+                        if (mDrawerToggle.onOptionsItemSelected(item)) {
+                            return true;
+                        }
+                        switch (id){
+                            case R.id.action_today:
+
+                                return false;
+                            case R.id.action_day_view:
+
+                                return false;
+                            case R.id.action_three_day_view:
+
+                                return false;
+                            case R.id.action_week_view:
+
+                                return false;
+                            case R.id.action_websearch:
+                                Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+
+                        }
                         return true;
                     }
                 });
@@ -167,6 +190,9 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_week_view:
 
                 return false;
+            case R.id.action_websearch:
+                Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+
         }
 
         return super.onOptionsItemSelected(item);

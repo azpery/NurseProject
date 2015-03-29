@@ -42,6 +42,22 @@ public class Model {
         }
         dataBase.close();
     }
+    public void deleteVisite() {
+        open();
+        ObjectSet<Visite> result = dataBase.queryByExample(Visite.class);
+        while (result.hasNext()) {
+            dataBase.delete(result.next());
+        }
+        dataBase.close();
+    }
+
+    public void addVisite(ArrayList<Visite> vVisite) {
+        open();
+        for (Visite v : vVisite) {
+            dataBase.store(v);
+        }
+        dataBase.close();
+    }
     public void deleteActe(){
         open();
         ObjectSet<Acte> result = dataBase.queryByExample(Acte.class);
@@ -72,6 +88,16 @@ public class Model {
         if (!appDir.exists() && !appDir.isDirectory()) {
             appDir.mkdirs();
         }
+    }
+    public ArrayList<Visite> listeVisite() {
+        open();
+        ArrayList<Visite> listeVisite = new ArrayList<>();
+        ObjectSet<Visite> result = dataBase.queryByExample(Visite.class);
+        while (result.hasNext()) {
+            listeVisite.add(result.next());
+        }
+        dataBase.close();
+        return listeVisite;
     }
     public ArrayList<Patient> listePatient() {
         open();
