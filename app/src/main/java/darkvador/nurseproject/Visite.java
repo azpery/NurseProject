@@ -5,35 +5,19 @@ package darkvador.nurseproject;
  */
 public class Visite {
     private int idVisite;
-
-    public Visite(int idVisite, String nomInfirmiere, String prenomInfirmiere, String nomPatient, String prenomPatient, String dateDebut, String dateFin, int annee, int mois, int jour, int heureDebut, int duree) {
-        this.idVisite = idVisite;
-        this.nomInfirmiere = nomInfirmiere;
-        this.prenomInfirmiere = prenomInfirmiere;
-        this.nomPatient = nomPatient;
-        this.prenomPatient = prenomPatient;
-        this.dateDebut = dateDebut;
-        this.dateFin = dateFin;
-        this.annee = annee;
-        this.mois = mois;
-        this.jour = jour;
-        this.heureDebut = heureDebut;
-        this.duree = duree;
-    }
-
     private String nomInfirmiere;
     private String prenomInfirmiere;
     private String nomPatient;
     private String prenomPatient;
+    private String adressePatient;
     private String dateDebut;
     private String dateFin;
     private int annee;
-
-
     private int mois;
     private int jour;
     private int heureDebut;
     private int duree;
+    private String commentaireVisite;
     public Visite(int idVisite, String nomInfirmiere, String prenomInfirmiere, String nomPatient, String prenomPatient, String dateDebut, String dateFin) {
         this.idVisite = idVisite;
         this.nomInfirmiere = nomInfirmiere;
@@ -44,14 +28,40 @@ public class Visite {
         this.dateFin = dateFin;
         setdate();
     }
+    public Visite(int idVisite, String nomInfirmiere, String prenomInfirmiere, String nomPatient, String prenomPatient,String adressePatient, String dateDebut, String dateFin, int annee, int mois, int jour, int heureDebut, int duree, String commentaireVisite) {
+        this.idVisite = idVisite;
+        this.nomInfirmiere = nomInfirmiere;
+        this.prenomInfirmiere = prenomInfirmiere;
+        this.nomPatient = nomPatient;
+        this.prenomPatient = prenomPatient;
+        this.adressePatient=adressePatient;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.annee = annee;
+        this.mois = mois;
+        this.jour = jour;
+        this.heureDebut = heureDebut;
+        this.duree = duree;
+        this.commentaireVisite=commentaireVisite;
+    }
+    public Visite() {
+
+    }
     public void recopieVisite( Visite uneVisite){
         setIdVisite(uneVisite.getIdVisite());
         setNomInfirmiere(uneVisite.getNomInfirmiere());
         setPrenomInfirmiere(uneVisite.getPrenomInfirmiere());
         setNomPatient(uneVisite.getNomPatient());
         setPrenomPatient(uneVisite.getPrenomPatient());
+        setAdressePatient(uneVisite.getAdressePatient());
         setDateDebut(uneVisite.getDateDebut());
         setDateFin(uneVisite.getDateFin());
+        setAnnee(uneVisite.getAnnee());
+        setMois(uneVisite.getMois());
+        setJour(uneVisite.getJour());
+        setHeureDebut(uneVisite.getHeureDebut());
+        setDuree(uneVisite.getDuree());
+        setCommentaireVisite(uneVisite.getCommentaireVisite());
     }
     public int getIdVisite() {
         return idVisite;
@@ -77,6 +87,13 @@ public class Visite {
         this.prenomInfirmiere = prenomInfirmiere;
     }
 
+    public String getCommentaireVisite() {
+        return commentaireVisite;
+    }
+
+    public void setCommentaireVisite(String commentaireVisite) {
+        this.commentaireVisite = commentaireVisite;
+    }
     public String getNomPatient() {
         return nomPatient;
     }
@@ -88,7 +105,13 @@ public class Visite {
     public String getPrenomPatient() {
         return prenomPatient;
     }
+    public String getAdressePatient() {
+        return adressePatient;
+    }
 
+    public void setAdressePatient(String adressePatient) {
+        this.adressePatient = adressePatient;
+    }
     public void setPrenomPatient(String prenomPatient) {
         this.prenomPatient = prenomPatient;
     }

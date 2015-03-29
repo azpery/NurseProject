@@ -1,6 +1,7 @@
 package darkvador.nurseproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -68,8 +69,8 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
 
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
-        String[] mesparams = { "http://rdelaporte.alwaysdata.net/importVisite.php" };
-        mThreadCon = new Async (calendrier.this).execute(mesparams);
+       getActivity().findViewById(R.id.back).setBackgroundColor(R.color.ColorPrimary);
+        getActivity().findViewById(R.id.imageView2).setVisibility(View.GONE);
         menuOptionSelected();
     }
 
@@ -118,6 +119,10 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
                                     mWeekView.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
                                     mWeekView.setEventTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, getResources().getDisplayMetrics()));
                                 }
+                                return true;
+                            case R.id.action_maj:
+                                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importVisite.php" };
+                                mThreadCon = new Async (calendrier.this).execute(mesparams);
                                 return true;
                             case R.id.action_websearch:
                                 Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
@@ -186,6 +191,9 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
+        Intent myIntent = new Intent(getView().getContext(), afficheVisite.class);
+        myIntent.putExtra("id", Long.toString(event.getId()));
+        startActivity(myIntent);
         Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 

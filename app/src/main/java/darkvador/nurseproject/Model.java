@@ -75,7 +75,7 @@ public class Model {
         dataBase.close();
     }
     public void open() {
-        db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o"+ "/BasePatient.db4o";
+        db4oFileName = Environment.getExternalStorageDirectory() + "/basedb4o"+ "/BasePatient.db4o";
         // dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
         db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
         dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
@@ -128,6 +128,15 @@ public class Model {
         dataBase.close();
         return vretour;
     }
+    public Visite trouveVisite (int id) {
+        open();
+        Visite vretour = new Visite();
+        vretour.setIdVisite(id);
+        ObjectSet<Visite> result = dataBase.queryByExample(vretour);
+        vretour = (Visite) result.next();
+        dataBase.close();
+        return vretour;
+    }
     public void savePatient(Patient patient) {
         open();
         Patient vretour = new Patient();
@@ -141,6 +150,23 @@ public class Model {
             dataBase.store(vretour);
         }
         dataBase.close();
+    }
+    public void saveVisite(Visite visite) {
+        open();
+        Visite vretour = new Visite();
+        vretour.setIdVisite(visite.getIdVisite());
+        ObjectSet<Visite> result = dataBase.queryByExample(vretour);
+        if (result.size() == 0) {
+            dataBase.store(visite);
+        } else {
+            vretour = (Visite) result.next();
+            vretour.recopieVisite(visite);
+            dataBase.store(vretour);
+        }
+        dataBase.close();
+        ArrayList<Visite> v =listeVisite();
+        Patient p=new Patient();
+
     }
     /*public void chargeDataBase() {
         try {

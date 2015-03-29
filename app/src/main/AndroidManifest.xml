@@ -52,6 +52,10 @@
             android:name=".test"
             android:label="@string/title_activity_test" >
         </activity>
+        <activity
+            android:name=".afficheVisite"
+            android:label="@string/title_activity_affiche_visite" >
+        </activity>
     </application>
 
 </manifest>
