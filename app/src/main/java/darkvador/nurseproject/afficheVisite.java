@@ -1,5 +1,6 @@
 package darkvador.nurseproject;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -50,6 +51,12 @@ public class afficheVisite extends ActionBarActivity {
                 visite.setCommentaireVisite(((EditText) findViewById(R.id.etCommentaire)).getText().toString());
                 (new Model()).saveVisite(visite);
                 finish();
+            }
+        });
+        ((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent i=new Intent(v.getContext(), GoogleView.class);
+                startActivity(i);
             }
         });
     }

@@ -81,8 +81,7 @@ public class Model {
         dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
     }
     public void createDirectory() {
-        appDir = new File(Environment.getExternalStorageDirectory()
-                + "/baseDB4o");
+        appDir = new File(Environment.getExternalStorageDirectory()+ "/basedb4o");
 
         appDir = new File("/data" + "/basedb4o");
         if (!appDir.exists() && !appDir.isDirectory()) {

@@ -21,16 +21,17 @@
     <string name="title_activity_act_export">ActExport</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
-    <string name="action_websearch">Web search</string>
+    <string name="action_websearch">Rechercher</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_vueacte">vueacte</string>
     <string name="title_activity_test">test</string>
-    <string name="action_today">Go to today</string>
+    <string name="action_today">Aujourd\'hui</string>
     <string name="action_day_view">Day view</string>
     <string name="action_three_day_view">3 day view</string>
     <string name="action_week_view">Week view</string>
     <string name="title_activity_affiche_visite">afficheVisite</string>
     <string name="action_maj">Mise à jour</string>
+    <string name="title_activity_google_view">GoogleView</string>
 </resources>
