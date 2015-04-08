@@ -62,7 +62,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
                 }
                 if (classActivityAppelante.contains("ActImportAct")) {
                     tv = (TextView) mContext.getView().findViewById(R.id.tV);
-                    tv.setText("Import Actes terminé avec succès");
+                    tv.setText("Import des actes terminé avec succès");
                     ((ActImportActe) activityAppelante.get()).retourImport(stringBuilder);
                 }
                 else if (classActivityAppelante.contains("ActExport")){

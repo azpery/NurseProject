@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/button_material_dark">
+    android:background="#ff000000"
+    android:gravity="left|right"
+    android:padding="2dp"
+    android:paddingBottom="7dp"
+    android:textAlignment="center">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,45 +14,53 @@
         android:orientation="horizontal"
         android:baselineAligned="false"
         android:layout_gravity="center_vertical"
-        android:background="#ff17ffb0">
+        android:background="#ffaaff81"
+        android:paddingTop="1dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp">
         <TextView
             android:id="@+id/Soins"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"
-            android:textColor="#ff000000" />
+            android:textColor="#ff000000"
+            android:layout_gravity="top" />
+
+        <TextView
+            android:id="@+id/EstFait"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:textColor="#ff000000"
+            android:layout_gravity="right|top"
+            android:layout_alignLeft ="@+id/Soins"
+            android:textAlignment="center"
+            android:padding="1dp"
+            android:background="#ffff0006" />
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#ff17ffb0">
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:paddingBottom="1dp"
+        android:background="#ffaaff81">
 
         <TextView
             android:id="@+id/typeSoins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"
-            android:textColor="#ff000000" />
+            android:textColor="#ff000000"
+            android:layout_below="@+id/Soins"
 
+            />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#fffff996">
-
-        <TextView
-            android:id="@+id/EstFait"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dip"
-            android:textColor="#ff000000" />
-
-    </LinearLayout>
-
 
 
 </LinearLayout>

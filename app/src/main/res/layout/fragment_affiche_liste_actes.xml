@@ -8,9 +8,10 @@
 
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lvListe"
-        style="@style/Widget.AppCompat.Light.ListView.DropDown" />
+        style="@style/Widget.AppCompat.Light.ListView.DropDown"
+        android:dividerHeight="2dp" />
 
 </LinearLayout>
