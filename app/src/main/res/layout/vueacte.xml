@@ -9,37 +9,43 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:baselineAligned="false"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center_vertical"
+        android:background="#ff17ffb0">
         <TextView
             android:id="@+id/Soins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            android:paddingLeft="5dip"
+            android:textColor="#ff000000" />
 
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#ff17ffb0">
 
         <TextView
             android:id="@+id/typeSoins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            android:paddingLeft="5dip"
+            android:textColor="#ff000000" />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#fffff996">
 
         <TextView
             android:id="@+id/EstFait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            android:paddingLeft="5dip"
+            android:textColor="#ff000000" />
 
     </LinearLayout>
 
