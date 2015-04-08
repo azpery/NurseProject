@@ -1,5 +1,7 @@
 package darkvador.nurseproject;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -57,6 +59,20 @@ public class afficheVisite extends ActionBarActivity {
             public void onClick(View v){
                 Intent i=new Intent(v.getContext(), GoogleView.class);
                 startActivity(i);
+            }
+        });
+        ((Button) findViewById(R.id.btnListeActe)).setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Fragment fragment = new AfficheListeActes();
+                Bundle args = new Bundle();
+                fragment.setArguments(args);
+
+                // Insert the fragment by replacing any existing fragment
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
+
             }
         });
     }

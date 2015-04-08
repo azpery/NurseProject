@@ -83,15 +83,17 @@ public class Async extends AsyncTask<String, String, Boolean> {
     @Override
     protected Boolean doInBackground (String... params) {// Exécution en arrière plan
         String vUrl = "";
+        String vlistpatient="";
+        String vId = "";
         if (classActivityAppelante.contains("ActImportActe")||classActivityAppelante.contains("calendrier")) {
             vUrl = params[0];
-
+            vId = params[1];
         }
         if (classActivityAppelante.contains("ActImport")) {
             vUrl = params[0];
 
         }
-        String vlistpatient="";
+
         if (classActivityAppelante.contains("ActExport")) {
             vUrl = params[0];
             vlistpatient = params[1];
@@ -117,6 +119,12 @@ public class Async extends AsyncTask<String, String, Boolean> {
                 out.write(jsonParam.toString());
                 out.flush();
             }
+            if (classActivityAppelante.contains("ActImportActe")||classActivityAppelante.contains("calendrier"))
+            {
+                out.write(vId);
+                out.flush();
+            }
+
 
             out.close();
             // récupération du serveur

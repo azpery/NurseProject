@@ -34,16 +34,16 @@ public class ActImportActe extends Fragment {
     public void onStart() {
         super.onStart();
         Button testcon= (Button) getView().findViewById(R.id.testcon);
-
+        final String idVisite = "1";
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importActesVisites.php" };
+                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importActesVisites.php",idVisite };
                 mThreadCon = new Async (ActImportActe.this).execute(mesparams);
             }
         });
 
     }
-    public void retourImport(StringBuilder sb) // PROBLEME :  Ne semble pas récupérer du JSON...
+    public void retourImport(StringBuilder sb)
     {
         JsonElement json = new JsonParser().parse(sb.toString());
         JsonArray varray = json.getAsJsonArray();
