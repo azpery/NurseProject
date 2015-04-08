@@ -37,29 +37,40 @@ public class Async extends AsyncTask<String, String, Boolean> {
         super.onPreExecute();
         if (activityAppelante.get() != null)
             //Toast.makeText(activityAppelante.get(), "Thread on démarre", Toast.LENGTH_SHORT).show();
-         ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setVisibility(View.VISIBLE);
+            if(!classActivityAppelante.contains("calendrier")) {
+                ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setVisibility(View.VISIBLE);
 
-        ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(20);
-
+                ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(20);
+            }
     }
 
     @Override
     protected void onPostExecute (Boolean result) {
         if (activityAppelante.get() != null) {
             if (result) {
-                ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(100);
-                TextView tv =(TextView) mContext.getView().findViewById(R.id.tV);
+                TextView tv;
+                if(!classActivityAppelante.contains("calendrier")) {
+                    ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(100);
+                     tv = (TextView) mContext.getView().findViewById(R.id.tV);
 
-                tv.setVisibility(View.VISIBLE);
+
+                    tv.setVisibility(View.VISIBLE);
+                }
                 //pour exemple on appelle une méthode de l'appelant qui va gérer la fin ok du thread
+                if(classActivityAppelante.contains("calendrier")){
+                    ((calendrier) activityAppelante.get()).retourImport(stringBuilder);
+                }
                 if (classActivityAppelante.contains("ActImportAct")) {
+                    tv = (TextView) mContext.getView().findViewById(R.id.tV);
                     tv.setText("Import Actes terminé avec succès");
                     ((ActImportActe) activityAppelante.get()).retourImport(stringBuilder);
                 }
                 else if (classActivityAppelante.contains("ActExport")){
+                    tv = (TextView) mContext.getView().findViewById(R.id.tV);
                     tv.setText("Export des données terminé avec succès");
                 }else if (classActivityAppelante.contains("ActImport"))
                 {
+                    tv = (TextView) mContext.getView().findViewById(R.id.tV);
                     tv.setText("Import terminé avec succès");
                     ((ActImport) activityAppelante.get()).retourImport (stringBuilder);
                 }
@@ -72,7 +83,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
     @Override
     protected Boolean doInBackground (String... params) {// Exécution en arrière plan
         String vUrl = "";
-        if (classActivityAppelante.contains("ActImportActe")) {
+        if (classActivityAppelante.contains("ActImportActe")||classActivityAppelante.contains("calendrier")) {
             vUrl = params[0];
 
         }
@@ -146,7 +157,9 @@ public class Async extends AsyncTask<String, String, Boolean> {
             if (urlConnection != null)
                 urlConnection.disconnect();
         }
-        ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(50);
+        if(!classActivityAppelante.contains("calendrier")) {
+            ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(50);
+        }
         return true;
     }
     @Override
@@ -156,7 +169,9 @@ public class Async extends AsyncTask<String, String, Boolean> {
         if (classActivityAppelante.contains("ActImport")) {
             //((ActImport) activityAppelante.get()).alertmsg (param[0].toString(), param[1].toString());
         }
-        ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(50);
+        if(!classActivityAppelante.contains("calendrier")) {
+            ((ProgressBar) mContext.getView().findViewById(R.id.progressBar)).setProgress(50);
+        }
         //Toast.makeText(activityAppelante.get(), param[0].toString(), Toast.LENGTH_SHORT).show();
 
     }

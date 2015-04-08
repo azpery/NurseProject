@@ -39,7 +39,7 @@ public class AfficheListePatient extends Fragment {
                 Intent myIntent = new Intent(getView().getContext(), ModificationPatient.class);
                 myIntent.putExtra("idPatient", listePatient.get(position).getIdentifiant());
                 startActivity(myIntent);
-                Toast.makeText(getView().getContext(), "Choix : " + listePatient.get(position).getIdentifiant(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getView().getContext(), "Choix : " + listePatient.get(position).getIdentifiant(), Toast.LENGTH_LONG).show();
             }
         });
     }

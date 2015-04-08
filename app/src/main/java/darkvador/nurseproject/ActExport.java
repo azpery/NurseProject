@@ -53,9 +53,10 @@ public class ActExport extends Fragment {
             public void onClick(View v) {
                 String[] mesparams = { "http://rdelaporte.alwaysdata.net/export.php",sPatient};
                 mThreadCon = new Async (ActExport.this).execute(mesparams);
+                model.deletePatient();
             }
         });
-        model.deletePatient();
+
     }
 
     @Override
