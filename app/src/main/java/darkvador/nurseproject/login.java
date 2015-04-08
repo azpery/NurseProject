@@ -47,7 +47,10 @@ public class login extends ActionBarActivity {
     }
     public void retourImport(StringBuilder sb)
     {
-        if (!sb.toString().equalsIgnoreCase("[]")||!sb.toString().equalsIgnoreCase("")) {
+
+        String e= sb.toString();
+        int o= e.length();
+        if (!e.equalsIgnoreCase("[]")&&e.length()!=0) {
         JsonElement json = new JsonParser().parse(sb.toString());
             JsonArray varray = json.getAsJsonArray();
             Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();
@@ -62,7 +65,7 @@ public class login extends ActionBarActivity {
                 finish();
             }
 
-        }else if(sb.toString().equalsIgnoreCase("")){
+        }else if(sb.length()==0){
             Toast.makeText(this, "pas de connexion internet", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "mauvais pseudo sorry", Toast.LENGTH_SHORT).show();

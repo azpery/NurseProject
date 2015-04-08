@@ -34,7 +34,7 @@ public class afficheVisite extends ActionBarActivity {
         textView.setText(visite.getPrenomPatient()+" "+visite.getNomPatient());
         textView = (TextView) findViewById(R.id.tvDomicile);
         textView.setText(visite.getAdressePatient());
-        ArrayList<Visite> v= new ArrayList<>();
+        ArrayList<Visite> v= new ArrayList<Visite>();
         v=(new Model()).listeVisite();
         textView = (TextView) findViewById(R.id.tvHorraire);
         textView.setText(visite.getDateDebut());

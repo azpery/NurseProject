@@ -154,7 +154,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
 //        events.add(event);
         ArrayList<Visite> listeVisite=model.listeVisite();
         Random rand = new Random();
-        ArrayList<Integer> listeCouleur=new ArrayList<>();
+        ArrayList<Integer> listeCouleur=new ArrayList<Integer>();
         listeCouleur.add(getResources().getColor(R.color.event_color_02));
         listeCouleur.add(getResources().getColor(R.color.event_color_01));
         listeCouleur.add(getResources().getColor(R.color.event_color_03));
@@ -206,7 +206,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
         JsonElement json = new JsonParser().parse(sb.toString());
         JsonArray varray = json.getAsJsonArray();
         Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();
-        ArrayList<Visite> listeVisite = new ArrayList<>();
+        ArrayList<Visite> listeVisite = new ArrayList<Visite>();
         for (JsonElement obj : varray) {
             Visite visite = gson.fromJson(obj.getAsJsonObject(), Visite.class);
             visite.setdate();

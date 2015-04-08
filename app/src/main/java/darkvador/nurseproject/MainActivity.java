@@ -43,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
 
         }
         TextView i = (TextView) findViewById(R.id.bienvenue);
-        i.setText("Bienvenue"+Identity.prenom+" "+Identity.nom);
+        i.setText("Bienvenue "+Identity.prenom+" "+Identity.nom);
         toolbar.setOnMenuItemClickListener(
                 new Toolbar.OnMenuItemClickListener() {
                     @Override

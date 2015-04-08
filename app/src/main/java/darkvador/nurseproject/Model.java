@@ -92,20 +92,20 @@ public class Model {
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/basedb4o"+ "/BasePatient.db4o";
         // dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
-        //db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
+        db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
         dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
     }
     public void createDirectory() {
         appDir = new File(Environment.getExternalStorageDirectory()+ "/basedb4o");
 
-        //appDir = new File("/data" + "/basedb4o");
+        appDir = new File("/data" + "/basedb4o");
         if (!appDir.exists() && !appDir.isDirectory()) {
             appDir.mkdirs();
         }
     }
     public ArrayList<Visite> listeVisite() {
         open();
-        ArrayList<Visite> listeVisite = new ArrayList<>();
+        ArrayList<Visite> listeVisite = new ArrayList<Visite>();
         ObjectSet<Visite> result = dataBase.queryByExample(Visite.class);
         while (result.hasNext()) {
             listeVisite.add(result.next());
@@ -115,7 +115,7 @@ public class Model {
     }
     public ArrayList<Patient> listePatient() {
         open();
-        ArrayList<Patient> listePatient = new ArrayList<>();
+        ArrayList<Patient> listePatient = new ArrayList<Patient>();
         ObjectSet<Patient> result = dataBase.queryByExample(Patient.class);
         while (result.hasNext()) {
             listePatient.add(result.next());
@@ -125,7 +125,7 @@ public class Model {
     }
     public ArrayList<Acte> listeActes() {
         open();
-        ArrayList<Acte> listeActe = new ArrayList<>();
+        ArrayList<Acte> listeActe = new ArrayList<Acte>();
         ObjectSet<Acte> result = dataBase.queryByExample(Acte.class);
         while (result.hasNext()){
             listeActe.add(result.next());

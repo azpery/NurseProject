@@ -5,32 +5,32 @@ package darkvador.nurseproject;
  */
 public class Infirmiere {
     private int id =0;
-    private String nomInfirmiere;
-    private String prenomIfirmiere;
+    private String nom;
+    private String prenom;
     private String pseudo;
-    public Infirmiere(int id, String nomInfirmiere, String prenomIfirmiere,String pseudo) {
+    public Infirmiere(int id, String nom, String prenom,String pseudo) {
         this.id = id;
-        this.nomInfirmiere = nomInfirmiere;
-        this.prenomIfirmiere = prenomIfirmiere;
+        this.nom = nom;
+        this.prenom = prenom;
         this.pseudo = pseudo;
     }
 public Infirmiere(){
 
 }
     public String getPrenomIfirmiere() {
-        return prenomIfirmiere;
+        return prenom;
     }
 
     public void setPrenomIfirmiere(String prenomIfirmiere) {
-        this.prenomIfirmiere = prenomIfirmiere;
+        this.prenom = prenomIfirmiere;
     }
 
     public String getNomInfirmiere() {
-        return nomInfirmiere;
+        return nom;
     }
 
     public void setNomInfirmiere(String nomInfirmiere) {
-        this.nomInfirmiere = nomInfirmiere;
+        this.nom = nomInfirmiere;
     }
 
     public int getId() {
