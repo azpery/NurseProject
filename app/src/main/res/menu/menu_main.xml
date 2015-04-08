@@ -8,4 +8,7 @@
         android:icon="@mipmap/action_search"
         android:title="@string/action_websearch"
         app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/deconnexion"
+        android:title="@string/deco"
+        app:showAsAction="ifRoom" />
 </menu>

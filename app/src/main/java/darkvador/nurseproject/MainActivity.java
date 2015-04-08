@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -41,6 +42,8 @@ public class MainActivity extends ActionBarActivity {
             getSupportActionBar().setHomeButtonEnabled(true);
 
         }
+        TextView i = (TextView) findViewById(R.id.bienvenue);
+        i.setText("Bienvenue"+Identity.prenom+" "+Identity.nom);
         toolbar.setOnMenuItemClickListener(
                 new Toolbar.OnMenuItemClickListener() {
                     @Override
@@ -61,6 +64,13 @@ public class MainActivity extends ActionBarActivity {
                                 return false;
                             case R.id.action_week_view:
 
+                                return false;
+                            case R.id.deconnexion:
+                                Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                               Identity.deconnexion();
+                                Intent mi= new Intent(MainActivity.this, login.class);
+                                startActivity(mi);
+                                finish();
                                 return false;
                             case R.id.action_websearch:
                                 Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
@@ -171,30 +181,5 @@ public class MainActivity extends ActionBarActivity {
         mTitle = title;
         getActionBar().setTitle(mTitle);
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        switch (id){
-            case R.id.action_today:
 
-                return false;
-            case R.id.action_day_view:
-
-                return false;
-            case R.id.action_three_day_view:
-
-                return false;
-            case R.id.action_week_view:
-
-                return false;
-            case R.id.action_websearch:
-                Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     }

@@ -42,6 +42,20 @@ public class Model {
         }
         dataBase.close();
     }
+    public void deleteInfirmiere() {
+        open();
+        ObjectSet<Patient> result = dataBase.queryByExample(Infirmiere.class);
+        while (result.hasNext()) {
+            dataBase.delete(result.next());
+        }
+        dataBase.close();
+    }
+
+    public void addInfirmiere(Infirmiere i) {
+        open();
+        dataBase.store(i);
+        dataBase.close();
+    }
     public void deleteVisite() {
         open();
         ObjectSet<Visite> result = dataBase.queryByExample(Visite.class);
@@ -74,6 +88,7 @@ public class Model {
         }
         dataBase.close();
     }
+
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/basedb4o"+ "/BasePatient.db4o";
         // dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
@@ -83,7 +98,7 @@ public class Model {
     public void createDirectory() {
         appDir = new File(Environment.getExternalStorageDirectory()+ "/basedb4o");
 
-        appDir = new File("/data" + "/basedb4o");
+        //appDir = new File("/data" + "/basedb4o");
         if (!appDir.exists() && !appDir.isDirectory()) {
             appDir.mkdirs();
         }
@@ -124,6 +139,14 @@ public class Model {
         vretour.setIdentifiant(id);
         ObjectSet<Patient> result = dataBase.queryByExample(vretour);
         vretour = (Patient) result.next();
+        dataBase.close();
+        return vretour;
+    }
+    public Infirmiere trouveInfirmiere () {
+        open();
+        Infirmiere vretour=new Infirmiere();
+        ObjectSet<Infirmiere> i = dataBase.queryByExample(Infirmiere.class);
+        vretour = (Infirmiere)i.next();
         dataBase.close();
         return vretour;
     }
