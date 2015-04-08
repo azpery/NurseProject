@@ -1,5 +1,7 @@
 package darkvador.nurseproject;
 
+import android.support.v4.app.NotificationCompatSideChannelService;
+
 /**
  * Created by Mathieu on 25/03/2015.
  */
@@ -7,9 +9,13 @@ public class Acte {
 
 
 
-    public boolean isEstFait() {
-        return estFait;
+    public String getEstFait() {
+       if(estFait == true)
+           return "Réalisé.";
+       else
+           return "Non réalisé.";
     }
+    public boolean isEstFait() { return estFait;}
 
     public void setEstFait(boolean estFait) {
         this.estFait = estFait;

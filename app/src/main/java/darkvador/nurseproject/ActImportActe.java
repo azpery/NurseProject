@@ -57,7 +57,7 @@ public class ActImportActe extends Fragment {
             listeActe.add(acte);
         }
         model.deleteActe();
-       // model.addActe(listeActe);
+        model.addActe(listeActe);
         //alertmsg("Import terminé","Les "+listePatient.size()+" patients ont été ajouté à la base");
     }
 

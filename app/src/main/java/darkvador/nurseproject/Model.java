@@ -77,7 +77,7 @@ public class Model {
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/basedb4o"+ "/BasePatient.db4o";
         // dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
-        db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
+        //db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
         dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
     }
     public void createDirectory() {

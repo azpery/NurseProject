@@ -44,10 +44,12 @@ public class ActeAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.vueacte, null);
 
-            holder.textViewSoins = (TextView) convertView
-                    .findViewById(R.id.Soins);
+            //holder.textViewSoins = (TextView) convertView
+            //        .findViewById(R.id.Soins);
             holder.textViewTypeSoins = (TextView) convertView
                     .findViewById(R.id.typeSoins);
+            //holder.textViewEstFait  = (TextView) convertView
+            //        .findViewById(R.id.EstFait);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -57,15 +59,18 @@ public class ActeAdapter extends BaseAdapter {
         } else {
             convertView.setBackgroundColor(Color.rgb(255, 255, 255));
         }
-        holder.textViewSoins.setText(listActe.get(position)
-                .getLibelle());
+        //holder.textViewSoins.setText(listActe.get(position)
+        //        .getLibelle());
         holder.textViewTypeSoins.setText(listActe.get(position)
                 .getTypeSoin());
+        //holder.textViewTypeSoins.setText(listActe.get(position)
+        //        .getEstFait());
         return convertView;
     }
 
     private class ViewHolder {
-        TextView textViewSoins;
+        //TextView textViewSoins;
         TextView textViewTypeSoins;
+        //TextView textViewEstFait;
     }
 }
