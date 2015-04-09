@@ -26,6 +26,25 @@ public class afficheVisite extends ActionBarActivity {
         String idPatient = b.getString("id");
         //Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
         remplir_champ(idPatient);
+        ((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent i=new Intent(v.getContext(), GoogleView.class);
+                startActivity(i);
+            }
+        });
+        ((Button) findViewById(R.id.btnListeActe)).setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Fragment fragment = new AfficheListeActes();
+                Bundle args = new Bundle();
+                fragment.setArguments(args);
+                // Insert the fragment by replacing any existing fragment
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.listeSoins, fragment)
+                        .commit();
+
+            }
+        });
     }
 
     private void remplir_champ(String idPatient) {
@@ -55,26 +74,7 @@ public class afficheVisite extends ActionBarActivity {
                 finish();
             }
         });
-        ((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent i=new Intent(v.getContext(), GoogleView.class);
-                startActivity(i);
-            }
-        });
-        ((Button) findViewById(R.id.btnListeActe)).setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Fragment fragment = new AfficheListeActes();
-                Bundle args = new Bundle();
-                fragment.setArguments(args);
 
-                // Insert the fragment by replacing any existing fragment
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment)
-                        .commit();
-
-            }
-        });
     }
 
 

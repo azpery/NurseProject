@@ -37,6 +37,7 @@
             android:id="@+id/imageView2"
             android:background="@drawable/logo"
             android:layout_gravity="center_vertical" />
+
     </LinearLayout>
     <FrameLayout
     android:id="@+id/content_frame"
@@ -46,10 +47,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/bienvenue"
-            android:layout_gravity="center_horizontal|top" />
+            android:layout_gravity="center|bottom|top" />
     </FrameLayout>
 <!-- The navigation drawer -->
 <ListView android:id="@+id/left_drawer"
@@ -61,4 +61,5 @@
     android:dividerHeight="0dp"
     android:background="#111"/>
 </android.support.v4.widget.DrawerLayout>
+
 </LinearLayout>
