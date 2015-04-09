@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:id="@+id/lvListe"
         style="@style/Widget.AppCompat.Light.ListView.DropDown"
-        android:divider="@color/primary_dark_material_dark"
-        android:dividerHeight="1dp" />
+        android:divider="#00ffffff"
+        android:dividerHeight="2dp" />
 
 </LinearLayout>

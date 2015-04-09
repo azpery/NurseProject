@@ -43,8 +43,6 @@ public class PatientAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.vuepatient, null);
-            holder.textViewIdentifiant = (TextView) convertView
-                    .findViewById(R.id.vueIdentifiant);
             holder.textViewNom = (TextView) convertView
                     .findViewById(R.id.vueNom);
             holder.textViewPrenom = (TextView) convertView
@@ -62,8 +60,7 @@ public class PatientAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.textViewIdentifiant.setText(listPatient.get(position)
-                .getIdentifiant());
+
         holder.textViewNom.setText(listPatient.get(position).getNom());
         holder.textViewPrenom.setText(listPatient.get(position).getPrenom());
         String s = listPatient.get(position).getTelephone();
@@ -79,7 +76,7 @@ public class PatientAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        TextView textViewIdentifiant;
+
         TextView textViewNom;
         TextView textViewPrenom;
         TextView textViewTelephone;

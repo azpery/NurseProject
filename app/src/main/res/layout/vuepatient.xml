@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/button_material_dark">
+    android:id="@+id/unPatient"
+    android:background="#ff000381"
+    android:padding="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:baselineAligned="false"
-        android:layout_gravity="center_vertical">
-        <TextView
-            android:id="@+id/vueIdentifiant"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+        android:layout_gravity="center_vertical"
+        android:background="#ff02525c">
 
-        <TextView
-            android:id="@+id/vueNom"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="184dp"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            android:id="@+id/NomPrenom"
+            android:layout_gravity="left">
 
-        <TextView
-            android:id="@+id/vuePrenom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            <TextView
+                android:id="@+id/vuePrenom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dip"/>
+
+            <TextView
+                android:id="@+id/vueNom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dip"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/vueTl"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            android:paddingLeft="5dip"
+            android:layout_gravity="right" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:background="#ff02525c">
         <TextView
             android:id="@+id/vueAdresse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="5dip"/>
+            android:paddingLeft="5dip" />
 
         <TextView
             android:id="@+id/vueCp"
@@ -52,13 +61,21 @@
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"/>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:background="#ff02525c">
+
         <TextView
             android:id="@+id/vueVille"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dip"/>
-
-
     </LinearLayout>
 
 </LinearLayout>
