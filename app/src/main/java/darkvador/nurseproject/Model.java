@@ -6,7 +6,9 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -88,12 +90,35 @@ public class Model {
         }
         dataBase.close();
     }
-
-    public void open() {
+//Ouvrir le flux fichier
+//   Se servir des ligne misent en commentaire s'il y a un problème de droit avec le fichier db4o
+    public boolean open() {
+        DataOutputStream dataOutputStream=null;
+        Process process = null;
+//        try{
         db4oFileName = Environment.getExternalStorageDirectory() + "/basedb4o"+ "/BasePatient.db4o";
-        // dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
-        //db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
+//        dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
+        db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
+//        process = Runtime.getRuntime().exec("su");
+//        dataOutputStream = new DataOutputStream(process.getOutputStream());
+//        dataOutputStream.writeBytes("chmod 777 /data/basedb4o/BasePatient.db4o\n");
+//        dataOutputStream.writeBytes("exit\n");
+//        dataOutputStream.flush();
+//        process.waitFor();
         dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
+//    } catch (Exception e) {
+//
+//    } finally {
+//        try {
+//            if (dataOutputStream != null) {
+//                dataOutputStream.close();
+//            }
+//            process.destroy();
+//        } catch (Exception e) {
+//        }
+//    }
+//        return false;
+        return false;
     }
     public void createDirectory() {
         appDir = new File(Environment.getExternalStorageDirectory()+ "/basedb4o");
@@ -147,6 +172,16 @@ public class Model {
         Infirmiere vretour=new Infirmiere();
         ObjectSet<Infirmiere> i = dataBase.queryByExample(Infirmiere.class);
         vretour = (Infirmiere)i.next();
+        dataBase.close();
+        return vretour;
+    }
+    public boolean isSetInfirmiere(){
+        boolean vretour=true;
+        open();
+        ObjectSet<Infirmiere> i = dataBase.queryByExample(Infirmiere.class);
+        if(i.size()==0){
+            vretour=false;
+        }
         dataBase.close();
         return vretour;
     }

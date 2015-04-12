@@ -125,7 +125,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
                                 mThreadCon = new Async (calendrier.this).execute(mesparams);
                                 return true;
                             case R.id.action_websearch:
-                                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getView().getContext(), "Clicked", Toast.LENGTH_SHORT).show();
 
                         }
                         return true;

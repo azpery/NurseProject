@@ -30,7 +30,7 @@ public class login extends ActionBarActivity {
         setContentView(R.layout.activity_login);
         Button connexion = (Button) findViewById(R.id.btn_connexion);
 
-        if(Identity.id!=0){
+        if(model.isSetInfirmiere()){
             Infirmiere i = model.trouveInfirmiere();
             ajoutSession(i);
             Intent mi = new Intent(this, MainActivity.class);
