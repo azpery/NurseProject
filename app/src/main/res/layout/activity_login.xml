@@ -42,8 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/logo"
-            android:layout_above="@+id/textView5" />
+            android:src="@drawable/logo" />
     </RelativeLayout>
 
     <TextView
