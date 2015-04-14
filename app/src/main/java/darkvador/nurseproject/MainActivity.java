@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 
 public class MainActivity extends ActionBarActivity {
     Model myModel;
@@ -26,9 +30,11 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-
+    private String SENDER_ID = "111916247427";
     private CharSequence mDrawerTitle;
+    static final String TAG = "GCMDemo";
     private CharSequence mTitle;
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,9 @@ public class MainActivity extends ActionBarActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setIcon(R.drawable.rsz_2logo);
             getSupportActionBar().setHomeButtonEnabled(true);
+
+        }
+        if (checkPlayServices()) {
 
         }
         TextView i = (TextView) findViewById(R.id.bienvenue);
@@ -105,6 +114,11 @@ public class MainActivity extends ActionBarActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
     @Override
+    protected void onResume() {
+        super.onResume();
+        checkPlayServices();
+    }
+    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -116,7 +130,20 @@ public class MainActivity extends ActionBarActivity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Log.i(TAG, "This device is not supported.");
+                finish();
+            }
+            return false;
+        }
+        return true;
+    }
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -158,6 +185,10 @@ public class MainActivity extends ActionBarActivity {
             fragment = new calendrier();
 //            Intent myIntent = new Intent(this, test.class);
 //            startActivity(myIntent);
+        }else if(position == 6){
+
+            Intent myIntent = new Intent(this, DemoActivity.class);
+            startActivity(myIntent);
         }
 
 

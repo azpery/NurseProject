@@ -121,7 +121,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
                                 }
                                 return true;
                             case R.id.action_maj:
-                                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importVisite.php" };
+                                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importVisite.php", Integer.toString(Identity.id) };
                                 mThreadCon = new Async (calendrier.this).execute(mesparams);
                                 return true;
                             case R.id.action_websearch:
@@ -180,7 +180,6 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
     }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // TODO Add your menu entries here
         inflater.inflate(R.menu.menu_test, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }

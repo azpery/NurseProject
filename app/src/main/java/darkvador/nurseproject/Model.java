@@ -98,7 +98,7 @@ public class Model {
 //        try{
         db4oFileName = Environment.getExternalStorageDirectory() + "/basedb4o"+ "/BasePatient.db4o";
 //        dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
-        db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
+        //db4oFileName = "/data/basedb4o" + "/BasePatient.db4o";
 //        process = Runtime.getRuntime().exec("su");
 //        dataOutputStream = new DataOutputStream(process.getOutputStream());
 //        dataOutputStream.writeBytes("chmod 777 /data/basedb4o/BasePatient.db4o\n");
@@ -123,7 +123,7 @@ public class Model {
     public void createDirectory() {
         appDir = new File(Environment.getExternalStorageDirectory()+ "/basedb4o");
 
-        appDir = new File("/data" + "/basedb4o");
+       // appDir = new File("/data" + "/basedb4o");
         if (!appDir.exists() && !appDir.isDirectory()) {
             appDir.mkdirs();
         }

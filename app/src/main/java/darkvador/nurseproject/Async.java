@@ -101,7 +101,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
 
         String vlistpatient="";
         if(fragmentAppelante!= null) {
-            if ( classFragmentAppelante.contains("ActExport")||classFragmentAppelante.contains("ActImportActe")) {
+            if ( classFragmentAppelante.contains("ActExport")||classFragmentAppelante.contains("ActImportActe")||classFragmentAppelante.contains("calendrier")) {
                 vUrl = params[0];
                 vlistpatient = params[1];
             } else {
@@ -138,6 +138,11 @@ public class Async extends AsyncTask<String, String, Boolean> {
                     jsonParam.put("listpatient", Integer.parseInt(vlistpatient));
                     out.write(jsonParam.toString());
                     out.flush();
+                }else if(classFragmentAppelante.contains("calendrier")) {
+                    JSONObject jsonParam = new JSONObject();
+                    jsonParam.put("id", Integer.parseInt(vlistpatient));
+                    out.write(jsonParam.toString());
+                    out.flush();
                 }
             }else if(classActivityAppelante.contains("login")){
                 JSONObject jsonParam = new JSONObject();
@@ -145,7 +150,6 @@ public class Async extends AsyncTask<String, String, Boolean> {
                 out.write(jsonParam.toString());
                 out.flush();
             }
-
             out.close();
             // récupération du serveur
             int HttpResult = urlConnection.getResponseCode();
