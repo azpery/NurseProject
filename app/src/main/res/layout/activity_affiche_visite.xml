@@ -76,7 +76,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="51dp"
         android:id="@+id/etCommentaire"
         android:editable="true" />
 

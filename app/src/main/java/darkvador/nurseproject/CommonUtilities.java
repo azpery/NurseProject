@@ -12,7 +12,7 @@ public final class CommonUtilities {
     static final String SERVER_URL = "http://rdelaporte.alwaysdata.net/gcm_server_php/register.php";
 
     // Google project id
-    static final String SENDER_ID = "ace-ripsaw-91413";
+    static final String SENDER_ID = "111916247427";
 
     /**
      * Tag used on log messages.
