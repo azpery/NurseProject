@@ -99,7 +99,7 @@ public class GcmIntentService extends IntentService {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-        .setSmallIcon(R.drawable.rsz_2logo)
+        .setSmallIcon(R.drawable.rsz_1logo)
         .setContentTitle("Nurse Project Notification")
         .setStyle(new NotificationCompat.BigTextStyle()
         .bigText(msg))
