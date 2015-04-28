@@ -1,46 +1,53 @@
 package darkvador.nurseproject;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.FragmentActivity;
+import android.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import android.support.v4.app.FragmentActivity;
+
 
 public class afficheVisite extends FragmentActivity {
 
-    private FragmentPagerAdapter mPagerAdapter;
+    private PagerAdapter mPagerAdapter;
+    private ViewPager pager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewpager);
+        setContentView(R.layout.activity_affiche_visite);
 
-        List<Fragment> fragments = new Vector<Fragment>();
+        /*List<Fragment> fragments = new Vector<Fragment>();
         fragments.add(Fragment.instantiate(this, AfficheListeActes.class.getName()));
         fragments.add(Fragment.instantiate(this, AfficheListePatient.class.getName()));
 
-        this.mPagerAdapter = new MyPagerAdapter(super.getFragmentManager(), fragments);
-        ViewPager pager = (ViewPager) super.findViewById(R.id.viewpager);
+        mPagerAdapter = new MyPagerAdapter(super.getFragmentManager(), fragments);
+        pager = (ViewPager) super.findViewById(R.id.viewpager);
 
-        pager.setAdapter(this.mPagerAdapter);
+        pager.setAdapter(mPagerAdapter);
 
 
-
+*/
         Bundle b = getIntent().getExtras();
         String idPatient = b.getString("id");
 
-        //Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
-        //remplir_champ(idPatient);
-        /*((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
+        Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
+        remplir_champ(idPatient);
+        ((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent i=new Intent(v.getContext(), GoogleView.class);
                 startActivity(i);
@@ -58,7 +65,7 @@ public class afficheVisite extends FragmentActivity {
                         .commit();
 
             }
-        });*/
+        });
     }
 
     private void remplir_champ(String idPatient) {
@@ -113,4 +120,19 @@ public class afficheVisite extends FragmentActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    /*private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mPagerAdapter.getItem(position);
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
+    }*/
 }
