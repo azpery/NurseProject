@@ -1,32 +1,46 @@
 package darkvador.nurseproject;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+import android.support.v4.app.FragmentActivity;
 
+public class afficheVisite extends FragmentActivity {
 
-public class afficheVisite extends ActionBarActivity {
+    private FragmentPagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_affiche_visite);
+        setContentView(R.layout.viewpager);
+
+        List<Fragment> fragments = new Vector<Fragment>();
+        fragments.add(Fragment.instantiate(this, AfficheListeActes.class.getName()));
+        fragments.add(Fragment.instantiate(this, AfficheListePatient.class.getName()));
+
+        this.mPagerAdapter = new MyPagerAdapter(super.getFragmentManager(), fragments);
+        ViewPager pager = (ViewPager) super.findViewById(R.id.viewpager);
+
+        pager.setAdapter(this.mPagerAdapter);
+
+
+
         Bundle b = getIntent().getExtras();
         String idPatient = b.getString("id");
+
         //Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
-        remplir_champ(idPatient);
-        ((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
+        //remplir_champ(idPatient);
+        /*((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent i=new Intent(v.getContext(), GoogleView.class);
                 startActivity(i);
@@ -44,7 +58,7 @@ public class afficheVisite extends ActionBarActivity {
                         .commit();
 
             }
-        });
+        });*/
     }
 
     private void remplir_champ(String idPatient) {
