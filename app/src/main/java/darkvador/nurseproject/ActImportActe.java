@@ -37,7 +37,7 @@ public class ActImportActe extends Fragment {
         final String idVisite =Integer.toString(Identity.id);
         testcon.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importActesVisites.php",idVisite };
+                String[] mesparams = { "http://rdelaporte.alwaysdata.net/importActes.php" };
                 mThreadCon = new Async (ActImportActe.this).execute(mesparams);
             }
         });

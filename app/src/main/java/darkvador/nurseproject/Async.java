@@ -102,7 +102,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
         String vlistpatient="";
         String vlistvisite="";
         if(fragmentAppelante!= null) {
-            if ( classFragmentAppelante.contains("ActExport")||classFragmentAppelante.contains("ActImportActe")||classFragmentAppelante.contains("calendrier")) {
+            if ( classFragmentAppelante.contains("ActExport")||classFragmentAppelante.contains("calendrier")) {
                 vUrl = params[0];
                 vlistpatient = params[1];
             } else {
@@ -136,7 +136,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
                     out.flush();
                 }else if(classFragmentAppelante.contains("ActImportActe")){
                     JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("listpatient", Integer.parseInt(vlistpatient));
+                    jsonParam.put("listpatient", vlistpatient);//Integer.parseInt(vlistpatient));
                     out.write(jsonParam.toString());
                     out.flush();
                 }else if(classFragmentAppelante.contains("calendrier")) {
