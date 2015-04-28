@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,8 +26,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -38,6 +42,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
     private static final int TYPE_WEEK_VIEW = 3;
     private int mWeekViewType = TYPE_THREE_DAY_VIEW;
     private Model model = new Model();
+    private String sVisite = "";
     private AsyncTask<String, String, Boolean> mThreadCon = null;
     public calendrier() {
         // Required empty public constructor
@@ -184,6 +189,39 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    public void TestonPause()
+    {
+        Log.w("TAG", "App destoryed");
+
+
+        ArrayList<Visite> ToExport = new ArrayList<>();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss.S").create();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa");
+        int i = 0;
+        try {
+                for (Visite V : model.listeVisite()) {
+                    Date D = dateFormat.parse(V.getDateFin());
+                    Date now = new Date();
+                    sVisite = sVisite + gson.toJson(V);
+                    i++;
+                    if (D.compareTo(now) < 0) {
+                        ToExport.add(V);
+                    }
+                    if (i < ToExport.size()) {
+                        sVisite = sVisite + "@@@";
+                    }
+
+                    model.deleteVisiteById(V.getIdVisite());
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        String[] mesparams = { "http://rdelaporte.alwaysdata.net/exportVisite.php",sVisite};
+        mThreadCon = new Async (calendrier.this).execute(mesparams);
+        super.onPause();
+
+    }
+
     private String getEventTitle(Calendar time) {
         return String.format("Event of %02d:%02d %s/%d", time.get(Calendar.HOUR_OF_DAY), time.get(Calendar.MINUTE), time.get(Calendar.MONTH)+1, time.get(Calendar.DAY_OF_MONTH));
     }
@@ -200,6 +238,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
     public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
         Toast.makeText(getActivity(), "Long pressed event: " + event.getId(), Toast.LENGTH_SHORT).show();
     }
+
     public void retourImport(StringBuilder sb)
     {
         JsonElement json = new JsonParser().parse(sb.toString());

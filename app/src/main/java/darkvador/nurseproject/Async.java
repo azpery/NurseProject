@@ -100,6 +100,7 @@ public class Async extends AsyncTask<String, String, Boolean> {
         String vUrl = "";
 
         String vlistpatient="";
+        String vlistvisite="";
         if(fragmentAppelante!= null) {
             if ( classFragmentAppelante.contains("ActExport")||classFragmentAppelante.contains("ActImportActe")||classFragmentAppelante.contains("calendrier")) {
                 vUrl = params[0];

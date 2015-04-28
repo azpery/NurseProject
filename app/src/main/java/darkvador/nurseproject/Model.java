@@ -66,6 +66,16 @@ public class Model {
         }
         dataBase.close();
     }
+    public void deleteVisiteById(int IdVisite) {
+        open();
+        ObjectSet<Visite> result = dataBase.queryByExample(Visite.class);
+        ArrayList<Visite> VisiteToDelete = new ArrayList<Visite>();
+       for (Visite V : result) {
+           if (V.getIdVisite() == IdVisite)
+            dataBase.delete(V);
+        }
+        dataBase.close();
+    }
 
     public void addVisite(ArrayList<Visite> vVisite) {
         open();
