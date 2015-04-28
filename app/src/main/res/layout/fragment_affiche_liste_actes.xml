@@ -4,7 +4,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:text="Liste des actes"
     tools:context="darkvador.androidprojet3_delaporte.AfficheListeActes">
+
 
 
     <ListView
@@ -13,5 +15,6 @@
         android:id="@+id/lvListe"
         style="@style/Widget.AppCompat.Light.ListView.DropDown"
         android:dividerHeight="2dp" />
+
 
 </LinearLayout>
