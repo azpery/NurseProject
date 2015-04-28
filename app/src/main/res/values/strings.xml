@@ -10,7 +10,6 @@
         <item >Importer les actes</item>
         <item >Afficher les actes</item>
         <item>Calendrier</item>
-        <item>Test</item>
     </string-array>
     <string name="menu_list">Liste des patients</string>
     <string name="menu_import">Importer les patients</string>

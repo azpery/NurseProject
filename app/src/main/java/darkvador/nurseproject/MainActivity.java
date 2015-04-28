@@ -174,13 +174,7 @@ public class MainActivity extends ActionBarActivity{
             fragment = new calendrier();
 //            Intent myIntent = new Intent(this, test.class);
 //            startActivity(myIntent);
-        }else if(position == 6){
-
-            Intent myIntent = new Intent(this, DemoActivity.class);
-            startActivity(myIntent);
         }
-
-
         Bundle args = new Bundle();
         fragment.setArguments(args);
 
@@ -205,8 +199,7 @@ public class MainActivity extends ActionBarActivity{
         // This sample app persists the registration ID in shared preferences, but
         // how you store the regID in your app is up to you.
 
-        return getSharedPreferences(DemoActivity.class.getSimpleName(),
-                Context.MODE_PRIVATE);
+        return getSharedPreferences(MainActivity.class.getSimpleName(),Context.MODE_PRIVATE);
     }
     private boolean checkPlayServices() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);

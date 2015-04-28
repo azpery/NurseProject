@@ -11,7 +11,17 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- Required to show current location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Required OpenGL ES 2.0. for Maps V2 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
     <permission
         android:name="com.javapapers.android.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -89,7 +99,18 @@
         <receiver
             android:name=".GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
-            <intent-filter>
+            <intent-filter>dependencies {
+                compile fileTree(dir: 'libs', include: ['*.jar'])
+                compile files('libs/db4o-8.0.276.16149-all-java5.jar')
+                compile files('libs/gson-2.2.4.jar')
+                compile files('libs/android-support-v4.jar')
+                compile 'com.android.support:support-v13:20.0.+'
+                compile 'com.google.android.gms:play-services:7.0.0'
+                compile 'com.android.support:appcompat-v7:22.0.0'
+                compile 'com.github.alamkanak:android-week-view:1.2.1'
+                compile 'com.google.android.gms:play-services:7.0.0'
+                compile files('libs/gcm.server.jar')
+                }
 
                 <!-- Receives the actual messages. -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -99,11 +120,6 @@
         </receiver>
 
         <service android:name=".GcmIntentService" />
-
-        <activity
-            android:name=".DemoActivity"
-            android:label="@string/title_activity_demo" >
-        </activity>
     </application>
 
 </manifest>

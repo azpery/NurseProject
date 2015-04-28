@@ -43,13 +43,15 @@ public class afficheVisite extends FragmentActivity {
 
 */
         Bundle b = getIntent().getExtras();
-        String idPatient = b.getString("id");
+        final String idPatient = b.getString("id");
 
-        Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Choix : " + idPatient, Toast.LENGTH_LONG).show();
         remplir_champ(idPatient);
         ((Button) findViewById(R.id.btnMap)).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                Visite visite = (new Model()).trouveVisite(Integer.parseInt(idPatient));
                 Intent i=new Intent(v.getContext(), GoogleView.class);
+                i.putExtra("adresse", visite.getAdressePatient());
                 startActivity(i);
             }
         });

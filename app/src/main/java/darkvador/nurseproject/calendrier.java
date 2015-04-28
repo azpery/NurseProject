@@ -231,7 +231,7 @@ public class calendrier extends Fragment implements WeekView.MonthChangeListener
         Intent myIntent = new Intent(getView().getContext(), afficheVisite.class);
         myIntent.putExtra("id", Long.toString(event.getId()));
         startActivity(myIntent);
-        Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Clicked " + event.getName(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

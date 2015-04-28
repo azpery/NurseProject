@@ -44,7 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Afficher la liste d&apos;actes"
-        android:id="@+id/btnListeActe" />
+        android:id="@+id/btnListeActe"
+        android:background="@color/button_material_dark" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Y aller"
-        android:id="@+id/btnMap" />
+        android:id="@+id/btnMap"
+        android:background="@color/button_material_dark" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -91,14 +93,16 @@
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="valider"
-            android:id="@+id/bok" />
+            android:id="@+id/bok"
+            android:background="@color/button_material_dark" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Annuler"
-            android:id="@+id/bcanc" />
+            android:id="@+id/bcanc"
+            android:background="@color/button_material_dark" />
     </LinearLayout>
 
     <FrameLayout
